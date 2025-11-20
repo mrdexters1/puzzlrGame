@@ -52,6 +52,13 @@ app.post("/api/score", (req, res) => {
   const { gameId, playerId, score, timestamp, attempts, timeSpent, won } =
     req.body;
 
+  if (gameId) {
+    const existingScore = scores.find((s) => s.gameId === gameId);
+    if (existingScore) {
+      return res.json({ success: true, score: existingScore, duplicate: true });
+    }
+  }
+
   const scoreEntry = {
     gameId: gameId || null,
     playerId,

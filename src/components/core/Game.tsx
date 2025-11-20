@@ -71,7 +71,7 @@ function Game({
         inputRef.current.focus();
       }
     } catch (error) {
-      console.error("Ошибка загрузки слова:", error);
+      console.error("Error loading word:", error);
     }
   }, [scrambleWord, setSavedGameState]);
 
@@ -155,7 +155,7 @@ function Game({
       finishGame(false);
     } else {
       const matches = countMatches({ guess: guessUpper, word });
-      setHint(`Совпадает букв: ${matches} из ${word.length}`);
+      setHint(`Matching letters: ${matches} of ${word.length}`);
       setAttempts(newAttempts);
       setGuess("");
       inputRef.current?.focus();
@@ -198,14 +198,14 @@ function Game({
           onClick={onQuit}
           className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white font-bold text-sm uppercase tracking-wider border-2 border-slate-900 shadow-[3px_3px_0_0_rgb(15,23,42)] hover:shadow-[2px_2px_0_0_rgb(15,23,42)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-100"
         >
-          Выйти
+          Quit
         </button>
         <div className="flex gap-4 text-white font-bold">
           <div className="bg-slate-700 px-3 py-1 border-2 border-slate-900 shadow-[2px_2px_0_0_rgb(15,23,42)]">
-            Попытки: {remainingAttempts}/{MAX_ATTEMPTS}
+            Attempts: {remainingAttempts}/{MAX_ATTEMPTS}
           </div>
           <div className="bg-slate-700 px-3 py-1 border-2 border-slate-900 shadow-[2px_2px_0_0_rgb(15,23,42)]">
-            Время: {timeSpent}с
+            Time: {timeSpent}s
           </div>
         </div>
       </div>
@@ -213,7 +213,7 @@ function Game({
       <div className="space-y-8">
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight uppercase mb-2">
-            Угадай слово!
+            Guess the word!
           </h2>
           <div className="h-1 w-24 bg-amber-400 mx-auto"></div>
         </div>
@@ -236,7 +236,7 @@ function Game({
             type="text"
             value={guess}
             onChange={(e) => setGuess(e.target.value.toUpperCase())}
-            placeholder="Введите слово"
+            placeholder="Enter word"
             maxLength={word.length}
             className="w-full px-4 py-3 bg-slate-700 text-white placeholder-slate-400 font-bold text-lg uppercase tracking-wider border-4 border-slate-900 shadow-[4px_4px_0_0_rgb(15,23,42)] focus:outline-none focus:bg-slate-600 transition-colors"
           />
@@ -245,7 +245,7 @@ function Game({
             disabled={!guess.trim()}
             className="w-full px-8 py-4 bg-amber-400 hover:bg-amber-500 disabled:bg-slate-600 disabled:text-slate-400 disabled:cursor-not-allowed text-slate-900 font-black text-lg uppercase tracking-wider border-4 border-slate-900 shadow-[6px_6px_0_0_rgb(15,23,42)] hover:shadow-[4px_4px_0_0_rgb(15,23,42)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-100 active:shadow-[2px_2px_0_0_rgb(15,23,42)] active:translate-x-[4px] active:translate-y-[4px] disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0"
           >
-            Проверить
+            Check
           </button>
         </form>
 
@@ -260,7 +260,7 @@ function Game({
         {remainingAttempts <= 2 && remainingAttempts > 0 && (
           <div className="text-center">
             <div className="inline-block bg-red-600 px-4 py-2 text-white font-black uppercase tracking-wider border-2 border-slate-900 shadow-[3px_3px_0_0_rgb(15,23,42)]">
-              ⚠️ Осталось попыток: {remainingAttempts}
+              ⚠️ Attempts remaining: {remainingAttempts}
             </div>
           </div>
         )}
