@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"vite\"",
-    "server": "node server/index.js",
+    "dev": "concurrently \"npm run start\" \"vite\"",
+    "start": "node server/index.js",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },
