@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { GameLayout, MainIcon } from "@/App";
 
 export type ResultsProps = {
@@ -17,12 +17,9 @@ export type ResultsProps = {
 
 function Result({ data, userId, onNewGame, onQuit }: ResultsProps) {
   const { gameId, won, attempts, timeSpent, score, word } = data;
-  const hasSavedRef = useRef(false);
 
   useEffect(() => {
-    if (!gameId || hasSavedRef.current) return;
-
-    hasSavedRef.current = true;
+    if (!gameId) return;
 
     const handleSaveScore = async () => {
       const payload = {
@@ -42,6 +39,7 @@ function Result({ data, userId, onNewGame, onQuit }: ResultsProps) {
           },
           body: JSON.stringify(payload),
         });
+        window.dispatchEvent(new CustomEvent("scoreSaved"));
       } catch {
         console.error("Error saving score");
       }
