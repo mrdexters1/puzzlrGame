@@ -35,7 +35,7 @@ function Result({ data, userId, onNewGame, onQuit }: ResultsProps) {
         won,
       };
       try {
-        await fetch("/api/score", {
+        await fetch("https://puzzlrgame.fly.dev/api/score", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

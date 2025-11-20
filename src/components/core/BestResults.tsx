@@ -10,7 +10,7 @@ export function BestResults() {
 
   const loadScores = useCallback(() => {
     setIsLoading(true);
-    fetch("/api/scores")
+    fetch("https://puzzlrgame.fly.dev/api/scores")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -71,7 +71,7 @@ export function BestResults() {
   }
 
   const handleClear = async () => {
-    const response = await fetch("/api/scores", {
+    const response = await fetch("https://puzzlrgame.fly.dev/api/scores", {
       method: "DELETE",
       cache: "no-cache",
     });
