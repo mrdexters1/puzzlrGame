@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
@@ -95,4 +95,6 @@ app.delete("/api/scores", (_req, res) => {
   res.json({ success: true, message: "Scores cleared" });
 });
 
-app.listen(PORT);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("SERVER STARTED ON PORT:", PORT);
+});
