@@ -47,7 +47,7 @@ function Game({
 
   const fetchWord = useCallback(async () => {
     try {
-      const response = await fetch(`/api/word`);
+      const response = await fetch(`https://puzzlrgame.fly.dev/api/word`);
       const data = await response.json();
       const wordToGuess = data.word.toUpperCase();
       const scrambled = scrambleWord({ word: wordToGuess });
